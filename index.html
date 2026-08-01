@@ -868,13 +868,13 @@ footer{
   <div class="order-l">
     <span class="sec-eyebrow">Связаться с нами</span>
     <h2 class="sec-title" style="color:var(--cream)">Начнём создавать<br><em>вашу фигурку</em></h2>
-    <p class="sec-lead">Оставьте заявку — свяжемся в течение 30 минут и пришлём бесплатный 3D-макет без предоплаты.</p>
+    <p class="sec-lead">Оставьте заявку — свяжемся с вами в ближайшее время и пришлём бесплатный 3D-макет без предоплаты.</p>
     <div style="margin-top:2.5rem">
       <a href="https://t.me/foreverfigure_forum" class="contact-item">
         <div class="ci-icon">✈️</div><span class="ci-text">Telegram: @foreverfigure_forum</span>
       </a>
-      <a href="https://wa.me/79126008566" class="contact-item">
-        <div class="ci-icon">💬</div><span class="ci-text">WhatsApp: +7 912 600 85 66</span>
+      <a href="tel:+79126008566" class="contact-item">
+        <div class="ci-icon">📞</div><span class="ci-text">+7 912 600 85 66</span>
       </a>
       <a href="#" class="contact-item">
         <div class="ci-icon">🛒</div><span class="ci-text">Авито: ForeverFigure Екатеринбург</span>
@@ -885,29 +885,17 @@ footer{
     </div>
   </div>
   <div class="order-r">
-    <span class="sec-eyebrow">Форма заказа</span>
-    <h2 class="sec-title" style="margin-bottom:2rem">Оставьте <em>заявку</em></h2>
-    <form onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group"><label>Ваше имя</label><input type="text" placeholder="Александр" required></div>
-        <div class="form-group"><label>Телефон / Telegram</label><input type="text" placeholder="+7 900 000-00-00" required></div>
-      </div>
-      <div class="form-group">
-        <label>Тип фигурки</label>
-        <select>
-          <option>Фигурка-миниатюра — 15 000–25 000 ₽</option>
-          <option>Мультяшный стиль — 20 000 ₽</option>
-          <option>Фигурка питомца — 10 000 ₽</option>
-          <option>Парная фигурка — 20 000 ₽</option>
-          <option>Корпоративная фигурка — 15 000–25 000 ₽</option>
-          <option>Брелок / ёлочная игрушка — 2 500 ₽</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Пожелания и описание образа</label><textarea placeholder="Расскажите о человеке, животном или образе. Какая поза, одежда, особые детали?"></textarea></div>
-      <button type="submit" class="btn-submit">Получить бесплатный 3D-макет</button>
-      <p class="form-note">Без предоплаты · Ответим в течение 30 минут</p>
-    </form>
-    <p id="form-ok" style="display:none;margin-top:1rem;color:var(--gold);font-weight:600;font-size:0.9rem">✓ Заявка принята! Свяжемся с вами в течение 30 минут.</p>
+    <span class="sec-eyebrow">Как оставить заявку</span>
+    <h2 class="sec-title" style="margin-bottom:1.4rem">Напишите нам<br><em>в Telegram</em></h2>
+    <p style="color:var(--text);font-size:0.95rem;line-height:1.75;margin-bottom:2rem">Пришлите фото — мы бесплатно сделаем 3D-макет и покажем, как будет выглядеть фигурка. Без предоплаты.</p>
+    <p style="color:var(--gold);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.9rem">Что подготовить</p>
+    <ul style="list-style:none;margin-bottom:2.2rem">
+      <li style="color:var(--text);font-size:0.9rem;line-height:1.6;margin-bottom:0.55rem;padding-left:1.4rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">—</span>2–3 фото: анфас, профиль, в полный рост</li>
+      <li style="color:var(--text);font-size:0.9rem;line-height:1.6;margin-bottom:0.55rem;padding-left:1.4rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">—</span>тип фигурки и желаемый размер</li>
+      <li style="color:var(--text);font-size:0.9rem;line-height:1.6;padding-left:1.4rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">—</span>поза, одежда, особые детали</li>
+    </ul>
+    <a href="https://t.me/foreverfigure_orders_bot?start=order" class="btn-submit" style="display:block;text-align:center;text-decoration:none;margin-bottom:0.9rem">Оставить заявку в Telegram</a>
+    <p class="form-note">Без предоплаты · Ответим в ближайшее время</p>
   </div>
 </section>
 
@@ -932,43 +920,6 @@ const obs = new IntersectionObserver(entries => {
 }, {threshold: 0.1});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.btn-submit');
-  btn.textContent = 'Отправляем...';
-  btn.disabled = true;
-
-  const name    = form.querySelector('input[type=text]').value;
-  const phone   = form.querySelectorAll('input[type=text]')[1].value;
-  const type    = form.querySelector('select').value;
-  const comment = form.querySelector('textarea').value;
-
-  const text = `🎉 Новая заявка ForeverFigure!\n\n👤 Имя: ${name}\n📞 Телефон/Telegram: ${phone}\n🗿 Тип фигурки: ${type}\n💬 Пожелания: ${comment}\n\n⏰ ${new Date().toLocaleString('ru-RU')}`;
-
-  const TOKEN   = '8577061594:AAEQA8snDDQ33JsvSEBMzKNfYg4d2r5csn0';
-  const CHAT_ID = '1065348687';
-
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'HTML' })
-    });
-    const data = await res.json();
-    if (data.ok) {
-      document.getElementById('form-ok').style.display = 'block';
-      form.style.opacity = '0.35';
-      form.style.pointerEvents = 'none';
-    } else {
-      btn.textContent = 'Ошибка, попробуйте снова';
-      btn.disabled = false;
-    }
-  } catch(err) {
-    btn.textContent = 'Ошибка соединения';
-    btn.disabled = false;
-  }
-}
 
 const secs = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('.nav-links a');
