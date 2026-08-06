@@ -543,6 +543,55 @@ footer{
   footer{flex-direction:column;gap:1.5rem;text-align:center;padding:2.5rem}
 }
 
+/* ── ПЛАНШЕТ И ТЕЛЕФОН: герой ── */
+/* Герой — это баннер с вшитым текстом. На широком экране он вписывается в
+   стовысотный блок и смотрится нормально, а на узком картинка сжимается по
+   ширине, и сверху-снизу остаётся почти полтора экрана пустой заливки.
+   Поэтому на мобильных блок подгоняется под пропорции самой картинки. */
+@media(max-width:900px){
+  /* padding:0, а не padding-top — иначе на баннер ложатся боковые поля секций */
+  #hero{min-height:0;height:auto;padding:0;display:block;overflow:visible}
+  .hero-bg{
+    position:relative;inset:auto;
+    width:100%;aspect-ratio:1408/768;
+    margin-top:88px;
+    background-size:cover;
+    animation:none;transform:none;
+  }
+  .hero-glow{display:none}
+}
+
+/* ── ТЕЛЕФОН ── */
+@media(max-width:640px){
+  nav{padding:0.6rem 1rem}
+  .nav-logo-vid{height:38px}
+  .nav-cta{padding:0.55rem 0.9rem;font-size:0.64rem;letter-spacing:0.06em}
+  .hero-bg{margin-top:60px}
+
+  section{padding:3.5rem 1.25rem}
+  .gold-divider{padding:0 1.25rem}
+
+  /* В две колонки на 375 px карточки становятся уже 140 px и вылезают за экран */
+  .prod-grid,.val-grid,.rev-grid,.form-row{grid-template-columns:1fr}
+  .proc-grid,.hist-grid{gap:2.5rem}
+  .hist-ornament{width:200px;height:200px;top:-40px;right:-40px}
+
+  /* Четыре цифры в один ряд занимают 434 px при экране 375 — четвёртая
+     («доставка по всей России») просто обрезалась. Раскладываем 2×2.
+     !important здесь вынужденно: у этого блока стили прописаны прямо
+     в разметке (style="flex:1"), а инлайн перебивает обычные правила. */
+  .hist-stats{flex-wrap:wrap !important;margin-top:2.5rem !important}
+  .h-stat{flex:0 0 50% !important;padding:1.1rem 0.4rem !important;min-width:0}
+  .h-stat:nth-child(2n){border-right:none !important}
+  .h-stat:nth-child(n+3){border-top:1px solid var(--border)}
+  .h-stat .n{font-size:1.7rem}
+  .h-stat .l{font-size:0.62rem;letter-spacing:0.06em}
+
+  .order-l,.order-r{padding:3rem 1.25rem}
+  footer{padding:2rem 1.25rem}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1rem}
+}
+
 /* ── ИКОНКИ (маски вшиты как data:URI, цвет задаётся --gold) ── */
 .ico{display:inline-block;background-color:var(--gold);vertical-align:middle;-webkit-mask-image:var(--m);mask-image:var(--m);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
 .ico-lg{width:54px;height:54px}
